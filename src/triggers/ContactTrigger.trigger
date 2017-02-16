@@ -1,7 +1,3 @@
-/* 
-	Create a Trigger on Contact that will check for duplicates before allowing a new record into the database. 
-	Validate against the email address and phone number fields.
-*/
 trigger ContactTrigger on Contact (before insert,before update,after insert,after update) {
     
     
@@ -25,7 +21,7 @@ trigger ContactTrigger on Contact (before insert,before update,after insert,afte
     if(trigger.isbefore){
         
         ContactTriggerHelper.associateAccountwithContact(trigger.new, trigger.oldmap);
-        ContactTriggerHelper.checkForDuplicateContact(trigger.new); 
+        ContactTriggerHelper.checkForDuplicateContact(trigger.new);
     }
     
     if(trigger.isAfter){
